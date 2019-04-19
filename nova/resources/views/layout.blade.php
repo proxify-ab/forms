@@ -86,5 +86,11 @@
     <script>
         Nova.liftOff()
     </script>
+
+    <script src="{{ mix('frm-run.js', 'vendor/nova') }}"></script>
+    <script src="{{ mix('jquery.min.js', 'vendor/nova') }}"></script>
+    <script src="{{ mix('jquery-ui.min.js', 'vendor/nova') }}"></script>
+    <script src="{{ mix('form-builder.min.custom.js', 'vendor/nova') }}"></script>
+
 </body>
 </html>

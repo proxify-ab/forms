@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Frm\FormBuilder\FormBuilder;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -44,8 +45,9 @@ class Form extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Title')->rules('required')->sortable(),
+            Textarea::make('Description')->rows(4),
             Text::make('Link')->rules('required')->sortable(),
-            Textarea::make('Description')->rows(4)
+            FormBuilder::make('Fields')
         ];
     }
 

@@ -52,7 +52,7 @@ class FormController extends Controller
     public function show(Form $form)
     {
         // echo $form->title;
-        return view('forms.'.$form->link, ['form' => $form]);
+        return view('forms.formview', ['form' => $form]);
     }
 
     /**

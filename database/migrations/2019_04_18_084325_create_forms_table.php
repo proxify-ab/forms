@@ -17,6 +17,7 @@ class CreateFormsTable extends Migration
             $table->bigIncrements('id');
             $table->text('title');
             $table->text('description');
+            $table->text('fields');
             $table->text('link');
             $table->timestamps();
         });

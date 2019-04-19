@@ -21,13 +21,23 @@
 
     @include('nova::auth.partials.errors')
 
-    <div class="mb-6 {{ $errors->has('email') ? ' has-error' : '' }}">
-        <label class="block font-bold mb-2" for="email">{{ __('Email Address') }}</label>
-        <input class="form-control form-input form-input-bordered w-full" id="email" type="email" name="email" value="{{ old('email') }}" required>
-    </div>
+    <div id="render-container"></div>
 
     <button class="w-full btn btn-default btn-primary hover:bg-primary-dark" type="submit">
         {{ __('Send Form') }}
     </button>
 </form>
+
+<script src="{{ mix('jquery.min.js', 'vendor/nova') }}"></script>
+<script src="{{ mix('jquery-ui.min.js', 'vendor/nova') }}"></script>
+<script src="{{ mix('form-render.min.js', 'vendor/nova') }}"></script>
+<script>
+    jQuery($ => {
+        const formData = '{!! $form->fields !!}';
+        const wrap = $('#render-container');
+        const formRenderOpts = {wrap, formData, dataType: 'json'};
+        wrap.formRender(formRenderOpts);
+    });
+</script>
+
 @endsection
