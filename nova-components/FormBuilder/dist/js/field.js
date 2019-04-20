@@ -249,7 +249,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['resourceName', 'field']
+    props: ['resourceName', 'field'],
+
+    mounted: function mounted() {
+        try {
+            var jsonData = JSON.parse(this.field.value);
+            this.field.value = jsonData.length + ' form fields';
+        } catch (err) {
+            this.field.value = 'no form fields';
+        }
+    }
 });
 
 /***/ }),
@@ -329,9 +338,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['resource', 'resourceName', 'resourceId', 'field']
+    props: ['resource', 'resourceName', 'resourceId', 'field'],
+
+    mounted: function mounted() {
+        registerRenderForm(this.field.value);
+    }
 });
 
 /***/ }),
@@ -342,7 +358,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("panel-item", { attrs: { field: _vm.field } })
+  return _c("div", { staticClass: "w-1/4 py-4" }, [
+    _c("h4", { staticClass: "font-normal text-80" }, [
+      _vm._v(_vm._s(_vm.field.name))
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "render-container" } })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

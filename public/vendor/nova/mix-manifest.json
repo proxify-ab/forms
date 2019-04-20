@@ -8,5 +8,6 @@
     "/jquery-ui.min.js": "/frm/jquery-ui.min.js",
     "/form-builder.min.custom.js": "/frm/form-builder.min.custom.js",
     "/form-render.min.js": "/frm/form-render.min.js",
-    "/frm-run.js": "/frm/frm-run.js"
+    "/frm-run.js": "/frm/frm-run.js",
+    "/frm-render.js": "/frm/frm-render.js"
 }
