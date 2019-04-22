@@ -9,7 +9,7 @@ export default {
     mounted() {
         try {
             let jsonData = JSON.parse(this.field.value);
-            this.field.value = jsonData.length + ' form fields';
+            this.field.value = jsonData.length + ' form field(s)';
         } catch (err) {
             this.field.value = 'no form fields';
         }

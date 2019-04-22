@@ -254,7 +254,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         try {
             var jsonData = JSON.parse(this.field.value);
-            this.field.value = jsonData.length + ' form fields';
+            this.field.value = jsonData.length + ' form field(s)';
         } catch (err) {
             this.field.value = 'no form fields';
         }
