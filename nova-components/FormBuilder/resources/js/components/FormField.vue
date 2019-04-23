@@ -29,7 +29,7 @@
         props: ['resourceName', 'resourceId', 'field'],
 
         mounted() {
-            registerFormBuilder();
+            registerFormBuilder(this.field.value);
             Nova.$on('frm-fieldAdded', value => {
                 this.value = value
             })

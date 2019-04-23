@@ -346,7 +346,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['resource', 'resourceName', 'resourceId', 'field'],
 
     mounted: function mounted() {
-        registerRenderForm(this.field.value);
+        if (typeof this.field.form_fields !== 'undefined' && this.field.form_fields.length > 10 && typeof this.field.user_answer !== 'undefined') {
+            var form_fields = [];
+            var user_answer = {};
+            try {
+                form_fields = JSON.parse(this.field.form_fields);
+                user_answer = JSON.parse(this.field.user_answer);
+            } catch (err) {}
+            registerFilledForm(form_fields, user_answer);
+        } else {
+            registerRenderForm(this.field.value);
+        }
     }
 });
 
@@ -464,7 +474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        registerFormBuilder();
+        registerFormBuilder(this.field.value);
         Nova.$on('frm-fieldAdded', function (value) {
             _this.value = value;
         });

@@ -12,4 +12,12 @@ class FormBuilder extends Field
      * @var string
      */
     public $component = 'form-builder';
+
+    public function drawcomplete($user_answer, $form_fields) {
+        return $this->withMeta([
+            'user_answer' => $user_answer,
+            'form_fields' =>  $form_fields
+        ]);
+    }
+
 }

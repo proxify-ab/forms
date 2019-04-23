@@ -6,24 +6,26 @@ use Frm\FormBuilder\FormBuilder;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Form extends Resource
+class Answer extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Form';
+    public static $model = 'App\Answer';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -44,10 +46,13 @@ class Form extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title')->rules('required')->sortable(),
-            Textarea::make('Description')->rows(4),
-            Text::make('Link')->rules('required')->sortable(),
-            FormBuilder::make('Fields')
+            BelongsTo::make('User')
+                ->sortable()
+                ->rules('required'),
+            BelongsTo::make('Form')
+                ->sortable()
+                ->rules('required'),
+            FormBuilder::make('Fields')->hideFromIndex()->drawcomplete($this->user_answer, $this->form->fields)
         ];
     }
 
@@ -94,4 +99,20 @@ class Form extends Resource
     {
         return [];
     }
+
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+    public function authorizedToDelete(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
+    }
+
 }

@@ -10,7 +10,18 @@ export default {
     props: ['resource', 'resourceName', 'resourceId', 'field'],
 
     mounted() {
-        registerRenderForm(this.field.value);
+        if ((typeof this.field.form_fields !== 'undefined') && (this.field.form_fields.length > 10) && (typeof this.field.user_answer !== 'undefined')) {
+            let form_fields = [];
+            let user_answer = {};
+            try {
+                form_fields = JSON.parse(this.field.form_fields);
+                user_answer = JSON.parse(this.field.user_answer);
+            } catch (err) { }
+            registerFilledForm(form_fields, user_answer);
+        }
+        else {
+            registerRenderForm(this.field.value);
+        }
     },
 
 }

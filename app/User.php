@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Answer;
 
 class User extends Authenticatable
 {
@@ -37,4 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'id_admin' => "boolean",
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
 }

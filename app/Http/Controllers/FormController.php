@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Form;
+use App\Answer;
 
 class FormController extends Controller
 {
@@ -36,11 +38,21 @@ class FormController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  $formId int
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $formId)
     {
-        //
+        $formData = $request->all();
+        unset($formData['_token']);
+
+        $answer = new Answer;
+        $answer->user_id = Auth::user()->id;
+        $answer->form_id = $formId;
+        $answer->user_answer = json_encode($formData);
+        $answer->save();
+
+        return view('forms.sendsuccess');
     }
 
     /**
