@@ -45,9 +45,11 @@ class Form extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Title')->rules('required')->sortable(),
-            Textarea::make('Description')->rows(4),
-            Text::make('Link')->rules('required')->sortable(),
-            FormBuilder::make('Fields')
+            Textarea::make('Description')->rules('required')->rows(4),
+            Text::make('Form Link', function () {
+                return route('form.link',[$this->id]);
+            }),
+            FormBuilder::make('Fields'),
         ];
     }
 

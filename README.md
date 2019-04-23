@@ -17,8 +17,11 @@ Forms to improve onboarding of developers
 
 # Usage
 1) Go to Admin area: http://127.0.0.1:8000/nova/ (email: admin@mail.com, pwd: 123456)
-2) Select "Forms" and create new one. Use "form1view" for "Link" field
+2) Select "Forms" menu item and create new one.
 3) Go to URL: http://127.0.0.1:8000/nova/form/{FormID} (email: user@mail.com, pwd: 123456)
+4) Save form
+5) Go to Admin area (login ad admin user)
+6) Select "Answers" menu item and create new one. 
 
 # Form view
 Location: /resources/views/forms/form1view.blade.php

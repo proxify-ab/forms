@@ -14,5 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/nova/form/{form}', 'FormController@show')->where('form', '[0-9]+');
+Route::get('/nova/form/{form}', 'FormController@show')->where('form', '[0-9]+')->name('form.link');;
 Route::post('/nova/form/{form}', 'FormController@store')->where('form', '[0-9]+');

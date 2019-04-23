@@ -5,7 +5,7 @@ window.registerFormBuilder = function (initFormData) {
                 const fbTemplate = document.getElementById('build-wrap');
                 var formBuilder = $(fbTemplate).formBuilder();
                 // Fill form builder with init data
-                if ((typeof initFormData !== 'undefined') && (initFormData.length > 10)) {
+                if ((typeof initFormData !== 'undefined') && (initFormData) && (initFormData.length > 10)) {
                     setTimeout(function () {
                         formBuilder.actions.setData(initFormData);
                     }, 700);

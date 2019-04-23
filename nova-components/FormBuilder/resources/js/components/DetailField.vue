@@ -10,7 +10,7 @@ export default {
     props: ['resource', 'resourceName', 'resourceId', 'field'],
 
     mounted() {
-        if ((typeof this.field.form_fields !== 'undefined') && (this.field.form_fields.length > 10) && (typeof this.field.user_answer !== 'undefined')) {
+        if ((typeof this.field.form_fields !== 'undefined') && (this.field.form_fields) && (this.field.form_fields.length > 10) && (typeof this.field.user_answer !== 'undefined') && (this.field.user_answer)) {
             let form_fields = [];
             let user_answer = {};
             try {
